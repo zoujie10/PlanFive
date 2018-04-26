@@ -80,7 +80,6 @@ class ViewController: UIViewController,SpreadsheetViewDelegate,SpreadsheetViewDa
 	}
 	
 	func frozenColumns(in spreadsheetView: SpreadsheetView) -> Int {
-//		return leftDate.count
 		return 1
 	}
 	
