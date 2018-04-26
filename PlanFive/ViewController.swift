@@ -97,21 +97,21 @@ class ViewController: UIViewController,SpreadsheetViewDelegate,SpreadsheetViewDa
 			cell.gridlines.right = .none
 			cell.backgroundColor = UIColor.red
 			return cell
-		case (0,1..<leftDate.count):
+		case (0,1..<leftDate.count)://日期cell  FIXME：获取日历时间  当月
 			let cell = spreadsheetView.dequeueReusableCell(withReuseIdentifier: String(describing: HeaderCell.self), for: indexPath) as! HeaderCell
 			cell.label.text = leftDate[indexPath.row] as? String
 			cell.gridlines.left = .default
 			cell.gridlines.right = .default
 			cell.backgroundColor = UIColor.green
 			return cell
-		case (1..<fiveTask.count,0):
+		case (1..<fiveTask.count,0)://任务cell
 			let cell = spreadsheetView.dequeueReusableCell(withReuseIdentifier: String(describing: HeaderCell.self), for: indexPath) as! HeaderCell
 			cell.label.text = fiveTask[indexPath.column] as? String
 			cell.gridlines.left = .default
 			cell.gridlines.right = .none
 			cell.backgroundColor = UIColor.blue
 			return cell
-		case (1...5,1...(leftDate.count-1)) :
+		case (1...5,1...(leftDate.count-1)) ://内容cell  FIXME：改为图片选择
 			let cell = spreadsheetView.dequeueReusableCell(withReuseIdentifier: String(describing: HeaderCell.self), for: indexPath) as! HeaderCell
 			cell.label.text = "emoj图片"
 			cell.gridlines.left = .default
@@ -133,13 +133,11 @@ class ViewController: UIViewController,SpreadsheetViewDelegate,SpreadsheetViewDa
 		// Dispose of any resources that can be recreated.
 	}
 	
-	
 	func makeTitileUI() -> Void{
 		//标题视图
 		TitleView.backgroundColor = UIColor.orange
 		TitleView.frame = CGRect(x:0,y:0,width:self.view.width,height:45+20+35)
 		
-
 		//title
 		let TitleLabel = UILabel()
 		TitleLabel.backgroundColor = UIColor.gray

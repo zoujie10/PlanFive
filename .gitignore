@@ -1,7 +1,6 @@
-DerivedData/
+DerivedData
 build/
 xcuserdata/
-/Users/zoujie/PlanFive/PlanFive/DerivedData
 *.moved-aside
 *.xccheckout
 *.xcscmblueprint
