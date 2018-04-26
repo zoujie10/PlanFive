@@ -1,0 +1,60 @@
+{
+  'version': 0,
+  'case-sensitive': 'false',
+  'roots': [
+    {
+      'type': 'directory',
+      'name': "/Users/zoujie/PlanFive/PlanFive/DerivedData/PlanFive/Build/Intermediates.noindex/SwiftMigration/PlanFive/Products/Debug-iphonesimulator/Pods_PlanFive.framework/Headers",
+      'contents': [
+        {
+          'type': 'file',
+          'name': "Pods-PlanFive-umbrella.h",
+          'external-contents': "/Users/zoujie/PlanFive/PlanFive/Pods/Target Support Files/Pods-PlanFive/Pods-PlanFive-umbrella.h"
+        },
+        {
+          'type': 'file',
+          'name': "Pods_PlanFive-Swift.h",
+          'external-contents': "/Users/zoujie/PlanFive/PlanFive/DerivedData/PlanFive/Build/Intermediates.noindex/SwiftMigration/PlanFive/Products/Debug-iphonesimulator/Pods_PlanFive.framework/Headers/Pods_PlanFive-Swift.h"
+        }
+      ]
+    },
+    {
+      'type': 'directory',
+      'name': "/Users/zoujie/PlanFive/PlanFive/DerivedData/PlanFive/Build/Intermediates.noindex/SwiftMigration/PlanFive/Products/Debug-iphonesimulator/Pods_PlanFive.framework/Modules",
+      'contents': [
+        {
+          'type': 'file',
+          'name': "module.modulemap",
+          'external-contents': "/Users/zoujie/PlanFive/PlanFive/DerivedData/PlanFive/Build/Intermediates.noindex/SwiftMigration/PlanFive/Intermediates.noindex/Pods.build/Debug-iphonesimulator/Pods-PlanFive.build/module.modulemap"
+        }
+      ]
+    },
+    {
+      'type': 'directory',
+      'name': "/Users/zoujie/PlanFive/PlanFive/DerivedData/PlanFive/Build/Intermediates.noindex/SwiftMigration/PlanFive/Products/Debug-iphonesimulator/SpreadsheetView/SpreadsheetView.framework/Headers",
+      'contents': [
+        {
+          'type': 'file',
+          'name': "SpreadsheetView-Swift.h",
+          'external-contents': "/Users/zoujie/PlanFive/PlanFive/DerivedData/PlanFive/Build/Intermediates.noindex/SwiftMigration/PlanFive/Products/Debug-iphonesimulator/SpreadsheetView/SpreadsheetView.framework/Headers/SpreadsheetView-Swift.h"
+        },
+        {
+          'type': 'file',
+          'name': "SpreadsheetView-umbrella.h",
+          'external-contents': "/Users/zoujie/PlanFive/PlanFive/Pods/Target Support Files/SpreadsheetView/SpreadsheetView-umbrella.h"
+        }
+      ]
+    },
+    {
+      'type': 'directory',
+      'name': "/Users/zoujie/PlanFive/PlanFive/DerivedData/PlanFive/Build/Intermediates.noindex/SwiftMigration/PlanFive/Products/Debug-iphonesimulator/SpreadsheetView/SpreadsheetView.framework/Modules",
+      'contents': [
+        {
+          'type': 'file',
+          'name': "module.modulemap",
+          'external-contents': "/Users/zoujie/PlanFive/PlanFive/DerivedData/PlanFive/Build/Intermediates.noindex/SwiftMigration/PlanFive/Intermediates.noindex/Pods.build/Debug-iphonesimulator/SpreadsheetView.build/module.modulemap"
+        }
+      ]
+    }
+  ]
+}

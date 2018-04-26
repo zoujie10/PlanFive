@@ -1,0 +1,13 @@
+{
+  'version': 0,
+  'case-sensitive': 'false',
+  'roots': [{
+    'type': 'directory',
+    'name': '/Users/zoujie/PlanFive/PlanFive/DerivedData/PlanFive/Build/Intermediates.noindex/SwiftMigration/PlanFive/Products/Debug-iphonesimulator/SpreadsheetView/SpreadsheetView.framework/Modules'
+    'contents': [{
+      'type': 'file',
+      'name': 'module.modulemap',
+      'external-contents': '/Users/zoujie/PlanFive/PlanFive/DerivedData/PlanFive/Build/Intermediates.noindex/SwiftMigration/PlanFive/Intermediates.noindex/Pods.build/Debug-iphonesimulator/SpreadsheetView.build/unextended-module.modulemap',
+    }]
+  }]
+}

@@ -7,24 +7,128 @@
 //
 
 import UIKit
+import SpreadsheetView
 
-let TitleView = UIView()
-let backScrollView = UIScrollView()
-class ViewController: UIViewController {
-
+class ViewController: UIViewController,SpreadsheetViewDelegate,SpreadsheetViewDataSource {
+	var spreadsheetView: SpreadsheetView!
+	let TitleView = UIView()
+	var leftDate = NSMutableArray()
+	var fiveTask = NSArray()
+	
+	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		// Do any additional setup after loading the view, typically from a nib.
 		self.view.backgroundColor = UIColor.white
+		//MARK:数据源填充
+		leftDate = [
+			"空位",
+			"4.1",
+			"4.2",
+			"4.3",
+			"4.4",
+			"4.5",
+			"4.6",
+			"4.7",
+			"4.8",
+			"4.9",
+		]
+		fiveTask = ["空位","任务1","任务2","任务3","任务4","任务5"]
+		
 		//TODO:UI布局
-		self.view.addSubview(backScrollView)
-		makeCollectionView()
 		makeTitileUI()
 		
+		spreadsheetView = SpreadsheetView()
+		spreadsheetView.frame = CGRect(x:0,y:TitleView.bottom+10,width:self.view.width,height:self.view.height-TitleView.height-60)
+		spreadsheetView.backgroundView?.backgroundColor = UIColor.blue
+		spreadsheetView.dataSource = self
+		spreadsheetView.delegate = self
+		
+		let hariline = 1/UIScreen.main.scale
+		spreadsheetView.intercellSpacing = CGSize(width: hariline, height: hariline)
+		spreadsheetView.gridStyle = .solid(width: hariline, color: .lightGray)
+		
+		spreadsheetView.register(HeaderCell.self, forCellWithReuseIdentifier: String(describing: HeaderCell.self))
+		spreadsheetView.register(TextCell.self, forCellWithReuseIdentifier: String(describing: TextCell.self))
+		spreadsheetView.register(TaskCell.self, forCellWithReuseIdentifier: String(describing: TaskCell.self))
+		spreadsheetView.register(ChartBarCell.self, forCellWithReuseIdentifier: String(describing: ChartBarCell.self))
 		self.view.addSubview(TitleView)
-		self.view.addSubview(backScrollView)
+		self.view.addSubview(spreadsheetView)
 	}
+	
+	override func viewDidAppear(_ animated: Bool) {
+		super.viewDidAppear(animated)
+		spreadsheetView.flashScrollIndicators()
+	}
+	//MARK: 协议实现 STRAT -------------
+	func spreadsheetView(_ spreadsheetView: SpreadsheetView, widthForColumn column: Int) -> CGFloat {
+		return 100
+		
+	}
+	
+	func spreadsheetView(_ spreadsheetView: SpreadsheetView, heightForRow row: Int) -> CGFloat {
 
+		return 34
+
+	}
+	
+	func numberOfColumns(in spreadsheetView: SpreadsheetView) -> Int {
+		return fiveTask.count
+	}
+	
+	func numberOfRows(in spreadsheetView: SpreadsheetView) -> Int {
+		return leftDate.count
+	}
+	
+	func frozenColumns(in spreadsheetView: SpreadsheetView) -> Int {
+//		return leftDate.count
+		return 1
+	}
+	
+	func frozenRows(in spreadsheetView: SpreadsheetView) -> Int {
+		return fiveTask.count
+	}
+	
+	func spreadsheetView(_ spreadsheetView: SpreadsheetView, cellForItemAt indexPath: IndexPath) -> Cell? {
+		
+		switch (indexPath.column,indexPath.row) {//column: , (row: )
+		case (0,0):
+			let cell = spreadsheetView.dequeueReusableCell(withReuseIdentifier: String(describing: HeaderCell.self), for: indexPath) as! HeaderCell
+			cell.label.text = "日期"
+			cell.gridlines.left = .default
+			cell.gridlines.right = .none
+			cell.backgroundColor = UIColor.red
+			return cell
+		case (0,1..<leftDate.count):
+			let cell = spreadsheetView.dequeueReusableCell(withReuseIdentifier: String(describing: HeaderCell.self), for: indexPath) as! HeaderCell
+			cell.label.text = leftDate[indexPath.row] as? String
+			cell.gridlines.left = .default
+			cell.gridlines.right = .default
+			cell.backgroundColor = UIColor.green
+			return cell
+		case (1..<fiveTask.count,0):
+			let cell = spreadsheetView.dequeueReusableCell(withReuseIdentifier: String(describing: HeaderCell.self), for: indexPath) as! HeaderCell
+			cell.label.text = fiveTask[indexPath.column] as? String
+			cell.gridlines.left = .default
+			cell.gridlines.right = .none
+			cell.backgroundColor = UIColor.blue
+			return cell
+		case (1...5,1...(leftDate.count-1)) :
+			let cell = spreadsheetView.dequeueReusableCell(withReuseIdentifier: String(describing: HeaderCell.self), for: indexPath) as! HeaderCell
+			cell.label.text = "emoj图片"
+			cell.gridlines.left = .default
+			cell.gridlines.right = .none
+			cell.backgroundColor = UIColor.orange
+			return cell
+		default:
+			return nil
+		}
+	}
+	
+	func spreadsheetView(_ spreadsheetView: SpreadsheetView, didSelectItemAt indexPath: IndexPath) {
+		print("Selected:（column: \(indexPath.column)）, (row: \(indexPath.row) )")
+	}
+	//MARK: 协议实现 END -------------
+	
 	override func didReceiveMemoryWarning() {
 		super.didReceiveMemoryWarning()
 		// Dispose of any resources that can be recreated.
@@ -33,81 +137,29 @@ class ViewController: UIViewController {
 	
 	func makeTitileUI() -> Void{
 		//标题视图
-		TitleView.backgroundColor = UIColor.white
+		TitleView.backgroundColor = UIColor.orange
 		TitleView.frame = CGRect(x:0,y:0,width:self.view.width,height:45+20+35)
 		
-		//左边Btn
-		let leftBtn = UIButton(type: .custom)
-		leftBtn.frame = CGRect(x:10,y:20,width:45,height:45)
-		leftBtn.addTarget(self, action: #selector(clickAction), for: .touchUpInside)
-		leftBtn.setTitle("月份", for: .normal)
-		leftBtn.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
-		leftBtn.setTitleColor(.black, for: .normal)
-		leftBtn.setTitleColor(.gray, for: .highlighted)
-		leftBtn.backgroundColor = UIColor.brown
-		leftBtn.isSelected = false
-		
+
 		//title
 		let TitleLabel = UILabel()
-		TitleLabel.backgroundColor = UIColor.white
+		TitleLabel.backgroundColor = UIColor.gray
 		TitleLabel.text = "习惯养成计划"
-		TitleLabel.frame = CGRect(x:leftBtn.frame.origin.x + leftBtn.frame.width,y:20,width:self.view.frame.width - leftBtn.frame.width * 2 - 20,height:45)
+		TitleLabel.frame = CGRect(x:self.view.frame.origin.x ,y:40,width:self.view.frame.width,height:45)
 		TitleLabel.textAlignment = NSTextAlignment.center
 		
-		//右边button
-		let rightBtn = UIButton()
-		rightBtn.frame = CGRect(x:TitleLabel.frame.origin.x + TitleLabel.frame.width,y:20,width:leftBtn.frame.width,height:45)
-		rightBtn.addTarget(self, action: #selector(clickAction), for: .touchUpInside)
-		rightBtn.setTitle("月份", for: .normal)
-		rightBtn.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
-		rightBtn.setTitleColor(.black, for: .normal)
-		rightBtn.setTitleColor(.gray, for: .highlighted)
-		rightBtn.backgroundColor = UIColor.white
-		rightBtn.isSelected = false
-		
-		let TitileBottomline = UIView()
-		TitileBottomline.backgroundColor = UIColor.gray
-		TitileBottomline.frame = CGRect(x:0,y:rightBtn.frame.origin.y + rightBtn.frame.height,width:self.view.frame.width,height:1)
-		
-		//月份Lable
-		let monthLabel = UILabel()
-		monthLabel.frame = CGRect(x:0,y:rightBtn.frame.origin.y + rightBtn.frame.height + 1,width:45,height:34)
-		monthLabel.backgroundColor = UIColor.orange
-		monthLabel.text = "三月"
-		monthLabel.textAlignment = NSTextAlignment.center
-		
-		//Five target TextField
-		var loopCount : Int = 0
-		for loopCount in 0..<5{
-			let textField  = UITextField()
-			textField.frame = CGRect(x:monthLabel.width + (self.view.width - monthLabel.width)/5 * CGFloat(loopCount),y:monthLabel.top,width:(self.view.width - monthLabel.width)/5,height:34)
-			textField.tag = loopCount
-			textField.backgroundColor = UIColor.blue
-			TitleView.addSubview(textField)
-		}
-		
-//		TitleView.addSubview(leftBtn)
 		TitleView.addSubview(TitleLabel)
-		TitleView.addSubview(rightBtn)
-		TitleView.addSubview(TitileBottomline)
-		TitleView.addSubview(monthLabel)
 	}
 	
-	func makeCollectionView() -> Void{
-	//FIXME:未实现collection
-	
-	
-	}
 
 	func makeMemoUI() -> Void {
 		//FIXME:未实现备注视图
 	}
 	//MARK:右上角点击事件
-	func clickAction() -> Void {
-		print("日期选择")
-		//FIXME: 未实现点击选择日期
-	}
+	//FIXME: 未实现点击选择日期
+		
+	
 
-
+	
 }
 

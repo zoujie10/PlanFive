@@ -1,0 +1,16 @@
+DerivedData/
+build/
+xcuserdata/
+/Users/zoujie/PlanFive/PlanFive/DerivedData
+*.moved-aside
+*.xccheckout
+*.xcscmblueprint
+## Objc-C/Swift specific
+*.hmap
+*.ipa
+*.dSYM.zip
+*.dSYM 
+## Playgrounds
+timeline.xctimeline
+playground.xcworkspace
+Pods/

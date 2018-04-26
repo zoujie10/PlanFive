@@ -1,0 +1,8 @@
+version: "Apple Swift version 4.1 (swiftlang-902.0.48 clang-902.0.37.1)"
+options: "bbfbf47a82620fd96368982fc890e443"
+build_time: [1524722516, 154098000]
+inputs:
+  "/Users/zoujie/PlanFive/PlanFive/PlanFive/ExtensionUIView.swift": [1491552271, 0]
+  "/Users/zoujie/Github/SpreadsheetView/Examples/GanttChart/Sources/Cells.swift": [1509518666, 0]
+  "/Users/zoujie/PlanFive/PlanFive/PlanFive/ViewController.swift": [1524722515, 0]
+  "/Users/zoujie/PlanFive/PlanFive/PlanFive/AppDelegate.swift": [1491378650, 0]
