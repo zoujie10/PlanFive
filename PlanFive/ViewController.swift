@@ -57,7 +57,23 @@ class ViewController: UIViewController,SpreadsheetViewDelegate,SpreadsheetViewDa
 	
 	override func viewDidAppear(_ animated: Bool) {
 		super.viewDidAppear(animated)
-		spreadsheetView.flashScrollIndicators()
+//		spreadsheetView.flashScrollIndicators()
+	}
+	func makeTitileUI() -> Void{
+		//标题视图
+		TitleView.backgroundColor = UIColor.orange
+		TitleView.frame = CGRect(x:0,y:0,width:self.view.width,height:45+20+35)
+		
+		//title
+		let TitleLabel = UILabel()
+		TitleLabel.backgroundColor = UIColor.white
+		TitleLabel.font = UIFont.boldSystemFont(ofSize: 24)
+		TitleLabel.text = "习惯养成计划"
+		TitleLabel.textColor = UIColor.orange
+		TitleLabel.frame = CGRect(x:self.view.frame.origin.x+30 ,y:40,width:self.view.frame.width-60,height:45)
+		TitleLabel.textAlignment = NSTextAlignment.center
+		
+		TitleView.addSubview(TitleLabel)
 	}
 	//MARK: 协议实现 STRAT -------------
 	func spreadsheetView(_ spreadsheetView: SpreadsheetView, widthForColumn column: Int) -> CGFloat {
@@ -92,7 +108,7 @@ class ViewController: UIViewController,SpreadsheetViewDelegate,SpreadsheetViewDa
 		switch (indexPath.column,indexPath.row) {//column: , (row: )
 		case (0,0):
 			let cell = spreadsheetView.dequeueReusableCell(withReuseIdentifier: String(describing: HeaderCell.self), for: indexPath) as! HeaderCell
-			cell.label.text = "日期"
+			cell.label.text = "日期/任务"
 			cell.gridlines.left = .default
 			cell.gridlines.right = .none
 			cell.backgroundColor = UIColor.red
@@ -112,7 +128,7 @@ class ViewController: UIViewController,SpreadsheetViewDelegate,SpreadsheetViewDa
 			cell.backgroundColor = UIColor.blue
 			return cell
 		case (1...5,1...(leftDate.count-1)) ://内容cell  FIXME：改为图片选择
-			let cell = spreadsheetView.dequeueReusableCell(withReuseIdentifier: String(describing: HeaderCell.self), for: indexPath) as! HeaderCell
+			let cell = spreadsheetView.dequeueReusableCell(withReuseIdentifier: String(describing: TextCell.self), for: indexPath) as! TextCell
 			cell.label.text = "emoj图片"
 			cell.gridlines.left = .default
 			cell.gridlines.right = .none
@@ -133,20 +149,7 @@ class ViewController: UIViewController,SpreadsheetViewDelegate,SpreadsheetViewDa
 		// Dispose of any resources that can be recreated.
 	}
 	
-	func makeTitileUI() -> Void{
-		//标题视图
-		TitleView.backgroundColor = UIColor.orange
-		TitleView.frame = CGRect(x:0,y:0,width:self.view.width,height:45+20+35)
-		
-		//title
-		let TitleLabel = UILabel()
-		TitleLabel.backgroundColor = UIColor.gray
-		TitleLabel.text = "习惯养成计划"
-		TitleLabel.frame = CGRect(x:self.view.frame.origin.x ,y:40,width:self.view.frame.width,height:45)
-		TitleLabel.textAlignment = NSTextAlignment.center
-		
-		TitleView.addSubview(TitleLabel)
-	}
+
 	
 
 	func makeMemoUI() -> Void {
