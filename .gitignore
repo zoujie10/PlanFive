@@ -13,3 +13,4 @@ xcuserdata/
 timeline.xctimeline
 playground.xcworkspace
 Pods/
+.DS_Store

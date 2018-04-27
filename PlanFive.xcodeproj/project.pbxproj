@@ -15,7 +15,7 @@
 		844BEBB31E94D95A00F443DB /* PlanFiveTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844BEBB21E94D95A00F443DB /* PlanFiveTests.swift */; };
 		845474681E96354E00C768F1 /* ExtensionUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845474671E96354E00C768F1 /* ExtensionUIView.swift */; };
 		845C1443208F2BD800833F72 /* Pods_PlanFive.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 845C1442208F2BD800833F72 /* Pods_PlanFive.framework */; };
-		84A5C2D9209067D800F4DE18 /* Cells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A5C2D8209067D800F4DE18 /* Cells.swift */; };
+		847B1C4D209322F8006DF150 /* Cells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847B1C4C209322F8006DF150 /* Cells.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,7 +48,7 @@
 		845C143F208F1B9F00833F72 /* Pods_PlanFive.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_PlanFive.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		845C1442208F2BD800833F72 /* Pods_PlanFive.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_PlanFive.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		845C1444208F2BDD00833F72 /* SnapKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SnapKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		84A5C2D8209067D800F4DE18 /* Cells.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Cells.swift; path = ../../../Github/SpreadsheetView/Examples/GanttChart/Sources/Cells.swift; sourceTree = "<group>"; };
+		847B1C4C209322F8006DF150 /* Cells.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cells.swift; sourceTree = "<group>"; };
 		DB94DE2DC074854AA7729FAD /* Pods-PlanFive.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PlanFive.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PlanFive/Pods-PlanFive.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -99,7 +99,7 @@
 				845474621E962BD100C768F1 /* ExtensionClass */,
 				844BEB9D1E94D95A00F443DB /* AppDelegate.swift */,
 				844BEB9F1E94D95A00F443DB /* ViewController.swift */,
-				84A5C2D8209067D800F4DE18 /* Cells.swift */,
+				847B1C4C209322F8006DF150 /* Cells.swift */,
 				844BEBA11E94D95A00F443DB /* Main.storyboard */,
 				844BEBA41E94D95A00F443DB /* Assets.xcassets */,
 				844BEBA61E94D95A00F443DB /* LaunchScreen.storyboard */,
@@ -325,7 +325,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				845474681E96354E00C768F1 /* ExtensionUIView.swift in Sources */,
-				84A5C2D9209067D800F4DE18 /* Cells.swift in Sources */,
+				847B1C4D209322F8006DF150 /* Cells.swift in Sources */,
 				844BEBA01E94D95A00F443DB /* ViewController.swift in Sources */,
 				844BEB9E1E94D95A00F443DB /* AppDelegate.swift in Sources */,
 			);
