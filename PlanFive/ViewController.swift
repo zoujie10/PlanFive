@@ -8,13 +8,14 @@
 
 import UIKit
 import SpreadsheetView
+import SnapKit
 
 class ViewController: UIViewController,SpreadsheetViewDelegate,SpreadsheetViewDataSource {
 	var spreadsheetView: SpreadsheetView!
 	let TitleView = UIView()
 	var leftDate = NSMutableArray()
 	var fiveTask = NSArray()
-	
+    let bottomView = HomeBottomView()
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -31,14 +32,41 @@ class ViewController: UIViewController,SpreadsheetViewDelegate,SpreadsheetViewDa
 			"4.7",
 			"4.8",
 			"4.9",
+            "4.9",
+            "4.9",
+            "4.9",
+            "4.9",
+            "4.9",
+            "4.9",
+            "4.9",
+            "4.9",
+            "4.9",
+            "4.1",
+            "4.2",
+            "4.3",
+            "4.4",
+            "4.5",
+            "4.6",
+            "4.7",
+            "4.8",
+            "4.9",
+            "4.9",
+            "4.9",
+            "4.9",
+            "4.9",
+            "4.9",
+            "4.9",
+            "4.9",
+            "4.9",
+            "4.9",
 		]
 		fiveTask = ["空位","任务1","任务2","任务3","任务4","任务5"]
 		
 		//TODO:UI布局
 		makeTitileUI()
-		
+        
 		spreadsheetView = SpreadsheetView()
-		spreadsheetView.frame = CGRect(x:0,y:TitleView.bottom+10,width:self.view.width,height:self.view.height-TitleView.height-60)
+		spreadsheetView.frame = CGRect(x:0,y:TitleView.bottom+10,width:self.view.width,height:self.view.height-TitleView.height-120)
 		spreadsheetView.backgroundView?.backgroundColor = UIColor.blue
 		spreadsheetView.dataSource = self
 		spreadsheetView.delegate = self
@@ -53,6 +81,9 @@ class ViewController: UIViewController,SpreadsheetViewDelegate,SpreadsheetViewDa
 		spreadsheetView.register(ChartBarCell.self, forCellWithReuseIdentifier: String(describing: ChartBarCell.self))
 		self.view.addSubview(TitleView)
 		self.view.addSubview(spreadsheetView)
+    
+        makeMemoUI()
+        
 	}
 	
 	override func viewDidAppear(_ animated: Bool) {
@@ -61,7 +92,7 @@ class ViewController: UIViewController,SpreadsheetViewDelegate,SpreadsheetViewDa
 	}
 	func makeTitileUI() -> Void{
 		//标题视图
-		TitleView.backgroundColor = UIColor.orange
+		TitleView.backgroundColor = UIColor.white
 		TitleView.frame = CGRect(x:0,y:0,width:self.view.width,height:45+20+35)
 		
 		//title
@@ -72,19 +103,15 @@ class ViewController: UIViewController,SpreadsheetViewDelegate,SpreadsheetViewDa
 		TitleLabel.textColor = UIColor.orange
 		TitleLabel.frame = CGRect(x:self.view.frame.origin.x+30 ,y:40,width:self.view.frame.width-60,height:45)
 		TitleLabel.textAlignment = NSTextAlignment.center
-		
 		TitleView.addSubview(TitleLabel)
 	}
 	//MARK: 协议实现 STRAT -------------
 	func spreadsheetView(_ spreadsheetView: SpreadsheetView, widthForColumn column: Int) -> CGFloat {
 		return 100
-		
 	}
 	
 	func spreadsheetView(_ spreadsheetView: SpreadsheetView, heightForRow row: Int) -> CGFloat {
-
 		return 34
-
 	}
 	
 	func numberOfColumns(in spreadsheetView: SpreadsheetView) -> Int {
@@ -118,21 +145,28 @@ class ViewController: UIViewController,SpreadsheetViewDelegate,SpreadsheetViewDa
 			cell.label.text = leftDate[indexPath.row] as? String
 			cell.gridlines.left = .default
 			cell.gridlines.right = .default
-			cell.backgroundColor = UIColor.green
+			cell.backgroundColor = UIColor.white
 			return cell
 		case (1..<fiveTask.count,0)://任务cell
 			let cell = spreadsheetView.dequeueReusableCell(withReuseIdentifier: String(describing: HeaderCell.self), for: indexPath) as! HeaderCell
 			cell.label.text = fiveTask[indexPath.column] as? String
 			cell.gridlines.left = .default
 			cell.gridlines.right = .none
-			cell.backgroundColor = UIColor.blue
+			cell.backgroundColor = UIColor.white
 			return cell
 		case (1...5,1...(leftDate.count-1)) ://内容cell  FIXME：改为图片选择
 			let cell = spreadsheetView.dequeueReusableCell(withReuseIdentifier: String(describing: TextCell.self), for: indexPath) as! TextCell
-			cell.label.text = "emoj图片"
-			cell.gridlines.left = .default
-			cell.gridlines.right = .none
-			cell.backgroundColor = UIColor.orange
+
+            let imageView = UIImageView()
+            cell.addSubview(imageView)
+            imageView.snp.makeConstraints { (make) in
+//                make.top.left.right.equalTo(cell).offset(10)
+//                make.bottom.equalTo(cell).offset(-10)
+                make.width.height.equalTo(15)
+                make.center.equalTo(cell)
+            }
+            imageView.image = UIImage.init(named: "cycleNike")
+            
 			return cell
 		default:
 			return nil
@@ -144,16 +178,21 @@ class ViewController: UIViewController,SpreadsheetViewDelegate,SpreadsheetViewDa
 	}
 	//MARK: 协议实现 END -------------
 	
+    
 	override func didReceiveMemoryWarning() {
 		super.didReceiveMemoryWarning()
 		// Dispose of any resources that can be recreated.
 	}
 	
 
-	
-
 	func makeMemoUI() -> Void {
-		//FIXME:未实现备注视图
+        
+		self.view.addSubview(bottomView)
+        bottomView.snp.makeConstraints { (view) in
+//            view.top.equalTo(self.spreadsheetView.bottom).offset(10)
+            view.height.equalTo(100)
+            view.left.right.bottom.equalTo(self.view)
+        }
 	}
 	//MARK:右上角点击事件
 	//FIXME: 未实现点击选择日期
