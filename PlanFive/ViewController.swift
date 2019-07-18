@@ -16,50 +16,20 @@ class ViewController: UIViewController,SpreadsheetViewDelegate,SpreadsheetViewDa
 	var leftDate = NSMutableArray()
 	var fiveTask = NSArray()
     let bottomView = HomeBottomView()
-	
+    var selectArr = NSMutableArray()
+    
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		self.view.backgroundColor = UIColor.white
-		//MARK:数据源填充
-		leftDate = [
-			"空位",
-			"4.1",
-			"4.2",
-			"4.3",
-			"4.4",
-			"4.5",
-			"4.6",
-			"4.7",
-			"4.8",
-			"4.9",
-            "4.9",
-            "4.9",
-            "4.9",
-            "4.9",
-            "4.9",
-            "4.9",
-            "4.9",
-            "4.9",
-            "4.9",
-            "4.1",
-            "4.2",
-            "4.3",
-            "4.4",
-            "4.5",
-            "4.6",
-            "4.7",
-            "4.8",
-            "4.9",
-            "4.9",
-            "4.9",
-            "4.9",
-            "4.9",
-            "4.9",
-            "4.9",
-            "4.9",
-            "4.9",
-            "4.9",
-		]
+        let days : Int = DataTool.getCurrentYearMonthDays()
+        let month : Int = DataTool.getCurrentYearMonth()
+        
+        //MARK:数据源填充 当前月 天数
+        for index in 0...days {
+            let str = "\(month).\(index)"
+            leftDate.add(str)
+        }
+		
 		fiveTask = ["空位","任务1","任务2","任务3","任务4","任务5"]
 		
 		//TODO:UI布局
@@ -68,6 +38,7 @@ class ViewController: UIViewController,SpreadsheetViewDelegate,SpreadsheetViewDa
 		spreadsheetView = SpreadsheetView()
 		spreadsheetView.frame = CGRect(x:0,y:TitleView.bottom+10,width:self.view.width,height:self.view.height-TitleView.height-120)
 		spreadsheetView.backgroundView?.backgroundColor = UIColor.blue
+        spreadsheetView.allowsMultipleSelection = true
 		spreadsheetView.dataSource = self
 		spreadsheetView.delegate = self
 		
@@ -166,15 +137,30 @@ class ViewController: UIViewController,SpreadsheetViewDelegate,SpreadsheetViewDa
                 make.center.equalTo(cell)
             }
             imageView.image = UIImage.init(named: "cycleNike")
-            
+
 			return cell
-		default:
-			return nil
-		}
+        default:
+            return nil
+        }
 	}
 	
 	func spreadsheetView(_ spreadsheetView: SpreadsheetView, didSelectItemAt indexPath: IndexPath) {
 		print("Selected:（column: \(indexPath.column)）, (row: \(indexPath.row) )")
+//        selectArr.append(indexPath.column)
+        switch (indexPath.column,indexPath.row) {//column: , (row: )
+        case (0,0): break
+        
+        case (0,1..<leftDate.count): break//日期cell  FIXME：获取日历时间  当月
+     
+        case (1..<fiveTask.count,0): break//任务cell
+    
+        case (1...5,1...(leftDate.count-1)) :
+            selectArr.add(indexPath)
+            break//内容cell  FIXME：改为图片选择
+        default:
+            break
+        }
+        
 	}
 	//MARK: 协议实现 END -------------
 	

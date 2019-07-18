@@ -10,6 +10,7 @@
 		4F02FDA522AF969200B8CB35 /* PictureResource.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F02FDA422AF969200B8CB35 /* PictureResource.xcassets */; };
 		4F02FDA722AF9DA800B8CB35 /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F02FDA622AF9DA800B8CB35 /* SnapKit.framework */; };
 		4F02FDA922AFA3A300B8CB35 /* HomeBottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F02FDA822AFA3A300B8CB35 /* HomeBottomView.swift */; };
+		4FB4FF4E22E03A0000DB85FE /* DataTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FB4FF4D22E03A0000DB85FE /* DataTool.swift */; };
 		844BEB9E1E94D95A00F443DB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844BEB9D1E94D95A00F443DB /* AppDelegate.swift */; };
 		844BEBA01E94D95A00F443DB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844BEB9F1E94D95A00F443DB /* ViewController.swift */; };
 		844BEBA31E94D95A00F443DB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 844BEBA11E94D95A00F443DB /* Main.storyboard */; };
@@ -35,6 +36,7 @@
 		4F02FDA422AF969200B8CB35 /* PictureResource.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = PictureResource.xcassets; sourceTree = "<group>"; };
 		4F02FDA622AF9DA800B8CB35 /* SnapKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SnapKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F02FDA822AFA3A300B8CB35 /* HomeBottomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HomeBottomView.swift; path = View/HomeBottomView.swift; sourceTree = "<group>"; };
+		4FB4FF4D22E03A0000DB85FE /* DataTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataTool.swift; sourceTree = "<group>"; };
 		6645915633DDEF775DB55563 /* Pods-PlanFive.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PlanFive.release.xcconfig"; path = "Pods/Target Support Files/Pods-PlanFive/Pods-PlanFive.release.xcconfig"; sourceTree = "<group>"; };
 		773B0EA02815AF3D2A4E1090 /* Pods_PlanFive.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PlanFive.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		844BEB9A1E94D95A00F443DB /* PlanFive.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PlanFive.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -92,6 +94,14 @@
 			name = ViewModel;
 			sourceTree = "<group>";
 		};
+		4FB4FF4C22E039D600DB85FE /* ToolClass */ = {
+			isa = PBXGroup;
+			children = (
+				4FB4FF4D22E03A0000DB85FE /* DataTool.swift */,
+			);
+			name = ToolClass;
+			sourceTree = "<group>";
+		};
 		844BEB911E94D95A00F443DB = {
 			isa = PBXGroup;
 			children = (
@@ -115,6 +125,7 @@
 		844BEB9C1E94D95A00F443DB /* PlanFive */ = {
 			isa = PBXGroup;
 			children = (
+				4FB4FF4C22E039D600DB85FE /* ToolClass */,
 				4F02FDA322AF90F800B8CB35 /* ViewModel */,
 				4F02FDA222AF90B300B8CB35 /* ViewController */,
 				84B6519920930943004E9500 /* View */,
@@ -343,6 +354,7 @@
 				844BEBA01E94D95A00F443DB /* ViewController.swift in Sources */,
 				4F02FDA922AFA3A300B8CB35 /* HomeBottomView.swift in Sources */,
 				844BEB9E1E94D95A00F443DB /* AppDelegate.swift in Sources */,
+				4FB4FF4E22E03A0000DB85FE /* DataTool.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
